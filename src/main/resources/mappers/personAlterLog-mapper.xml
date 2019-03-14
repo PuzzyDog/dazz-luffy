@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
 
-<mapper namespace="com.qq.qd.platform.daze.db.dao.IPersonAlterLogDAO">
+<mapper namespace="wei.lab.spring.daze.db.dao.IPersonAlterLogDAO">
     <resultMap id="PersonAlterLogMap" type="PersonAlterLog">
         <result jdbcType="TIMESTAMP" javaType="long" column="create_time" property="createTime"
-                typeHandler="com.qq.qd.platform.daze.util.DateLongTypeHandler"/>
+                typeHandler="wei.lab.spring.daze.util.DateLongTypeHandler"/>
     </resultMap>
 
     <sql id="TableName">
