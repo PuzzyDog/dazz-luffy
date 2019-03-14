@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.qq.qd.platform.daze.db.dao.IPersonInfoDAO" >
+    <resultMap id="PersonInfoMap" type="PersonInfo">
+        <result jdbcType="TIMESTAMP" javaType="long" column="birth" property="birth"
+                typeHandler="com.qq.qd.platform.daze.util.DateLongTypeHandler"/>
+    </resultMap>
+
+    <sql id="TableName">
+        person_info
+    </sql>
+
+    <select id="selectAll" resultMap="PersonInfoMap">
+        select
+            id, name, age, birth
+        from
+            <include refid="TableName"/>
+    </select>
+
+    <select id="selectById" parameterType="long" resultMap="PersonInfoMap">
+        select
+            id, name, age, birth
+        from
+            ${subTable}
+            <!--<include refid="TableName"/>-->
+        where
+            id = #{id}
+    </select>
+
+    <select id="selectByIdRange" useCache="true" resultMap="PersonInfoMap">
+        select
+            id
+        from
+            <!--<include refid="TableName"/>-->
+            ${subTable}
+        where id >= #{startId} and <![CDATA[id < #{endId}]]>
+    </select>
+
+    <insert id="insert" parameterType="PersonInfo">
+        insert into
+            <include refid="TableName"/>(name, age, birth)
+        values
+            (
+                #{name}, #{age},
+                #{birth, javaType=long, jdbcType=TIMESTAMP, typeHandler=com.qq.qd.platform.daze.util.DateLongTypeHandler}
+            )
+    </insert>
+
+
+</mapper>
