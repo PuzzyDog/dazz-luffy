@@ -1,7 +1,5 @@
 package wei.lab.spring.daze.configuration;
 
-import wei.lab.spring.daze.configuration.ext.TypeSafeConfigFactory;
-import wei.lab.spring.daze.db.ext.CustomInterceptor;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigObject;
 import com.typesafe.config.ConfigValue;
@@ -21,6 +19,8 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import wei.lab.spring.daze.configuration.ext.TypeSafeConfigFactory;
+import wei.lab.spring.daze.db.ext.CustomInterceptor;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
@@ -62,7 +62,7 @@ public class DatasourceConfiguration {
         SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
         factoryBean.setDataSource(dataSource());
         factoryBean.setMapperLocations(parsePathWithWildcard("classpath:mappers/*.xml"));
-        factoryBean.setTypeAliasesPackage("com.qq.qd.platform.daze.db.entity");
+        factoryBean.setTypeAliasesPackage("wei.lab.spring.daze.db.entity");
 
         org.apache.ibatis.session.Configuration innerConfig =
                 new org.apache.ibatis.session.Configuration();
@@ -89,7 +89,7 @@ public class DatasourceConfiguration {
     @Bean
     public static MapperScannerConfigurer mapperScanner() {
         MapperScannerConfigurer configurer = new MapperScannerConfigurer();
-        configurer.setBasePackage("com.qq.qd.platform.daze.db.dao");
+        configurer.setBasePackage("wei.lab.spring.daze.db.dao");
         configurer.setAnnotationClass(Repository.class);
 
         return configurer;

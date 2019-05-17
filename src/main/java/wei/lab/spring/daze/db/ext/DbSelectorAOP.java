@@ -1,6 +1,5 @@
 package wei.lab.spring.daze.db.ext;
 
-import wei.lab.spring.daze.configuration.DatasourceConfiguration;
 import org.apache.ibatis.annotations.Param;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -16,6 +15,7 @@ import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 import org.springframework.stereotype.Component;
+import wei.lab.spring.daze.configuration.DatasourceConfiguration;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -100,7 +100,7 @@ public class DbSelectorAOP {
         }
     }
 
-    @Pointcut("within(DataAccessService)" +
+    @Pointcut("within(wei.lab.spring.daze.service.DataAccessService)" +
             "&& @annotation(DbSelector)")
     public void dbSelector(){}
 }

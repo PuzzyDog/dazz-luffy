@@ -21,7 +21,7 @@ public class CacheConfiguration {
     CacheManager cacheManager() {
         SimpleCacheManager cacheManager = new SimpleCacheManager();
         cacheManager.setCaches(Arrays.asList(cache5Secs()));
-        System.out.println("cache configuration is invoked.");
+//        System.out.println("cache configuration is invoked.");
 
         return cacheManager;
     }

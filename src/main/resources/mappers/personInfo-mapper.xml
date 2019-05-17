@@ -43,7 +43,7 @@
         values
             (
                 #{name}, #{age},
-                #{birth, javaType=long, jdbcType=TIMESTAMP, typeHandler=com.qq.qd.platform.daze.util.DateLongTypeHandler}
+                #{birth, javaType=long, jdbcType=TIMESTAMP, typeHandler=wei.lab.spring.daze.util.DateLongTypeHandler}
             )
     </insert>
 

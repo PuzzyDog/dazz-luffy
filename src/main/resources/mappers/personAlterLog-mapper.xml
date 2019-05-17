@@ -24,7 +24,8 @@
         values
             (
                 #{logData}, #{userId},
-                #{createTime, javaType=long, jdbcType=TIMESTAMP, typeHandler=com.qq.qd.platform.daze.util.DateLongTypeHandler}
+                #{createTime, javaType=long, jdbcType=TIMESTAMP, typeHandler=wei.lab.spring.daze.util.DateLongTypeHandler}
             )
+
     </insert>
 </mapper>
